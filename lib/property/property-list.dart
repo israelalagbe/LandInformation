@@ -26,12 +26,30 @@ class _PropertyListState extends State<PropertyList> {
     //     loading = false;
     //   });
     // });
-
-    properties = propertyService.getPosts();
+    new Future.delayed(Duration.zero, () {
+      properties = propertyService.getPosts().catchError((err) {
+        print(err);
+        alert(context,
+            title: "Error", content: "Error Occured while fetching posts");
+        //return Future.error("dddd");
+      });
+    });
   }
 
   Future loadItems() async {
-    return await Future.delayed(Duration(seconds: 3));
+    var items = propertyService.getPosts().catchError((err) {
+      print(err);
+      alert(context,
+          title: "Error", content: "Error Occured while fetching posts");
+    });
+    // new Future.delayed(Duration.zero, () {
+    // print("djkjkdkd");
+    setState(() {
+      properties = items;
+      print(properties);
+    });
+    return properties;
+    // });
   }
 
   @override
@@ -41,7 +59,7 @@ class _PropertyListState extends State<PropertyList> {
         titleSpacing: 0.0, //To minimize the padding between title and leading
         leading: Icon(Icons.landscape),
         title: Text(
-          "Land Management",
+          "Land Sales Management",
           textDirection: TextDirection.ltr,
         ),
         actions: <Widget>[
@@ -66,25 +84,23 @@ class _PropertyListState extends State<PropertyList> {
         ],
       ),
       body: RefreshIndicator(
-        onRefresh: () {
-          setState(() {
-           properties = propertyService.getPosts(); 
-          });
-          return properties;
-        },
-        child: Center(
+        onRefresh: () => loadItems(),
+        child: Container(
+          alignment: Alignment.center,
+          color: Color(0xFFF2F4F8),
           child: FutureBuilder<List<Property>>(
             future: properties, // a previously-obtained Future<String> or null
             builder:
                 (BuildContext context, AsyncSnapshot<List<Property>> snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.none:
-                  return Text('Nothing to show');
+                  return errorWidget();
                 case ConnectionState.active:
                 case ConnectionState.waiting:
                   return CircularProgressIndicator();
                 case ConnectionState.done:
-                  if (snapshot.hasError) return Icon(Icons.refresh);
+                  if (snapshot.hasError) return errorWidget();
+                  if (!snapshot.hasData) return errorWidget();
                   return ListView(
                     children: snapshot.data
                         .map((property) => PropertyItem(
@@ -98,6 +114,26 @@ class _PropertyListState extends State<PropertyList> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget errorWidget() {
+    return FlatButton(
+      child: SizedBox(
+        height: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Tap to refresh',
+            ),
+            Icon(Icons.refresh)
+          ],
+        ),
+      ),
+      onPressed: () {
+        loadItems();
+      },
     );
   }
 

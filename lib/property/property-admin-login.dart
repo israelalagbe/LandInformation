@@ -101,7 +101,7 @@ class _PropertyAdminLoginState extends State<PropertyAdminLogin> {
               minHeight: viewportConstraints.maxHeight,
             ),
             child: Container(
-              color: Colors.white,
+              color: Color(0xFFF2F4F8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

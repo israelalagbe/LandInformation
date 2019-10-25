@@ -58,13 +58,17 @@ class PropertyItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      property.name,
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black.withAlpha(150)),
+                    SizedBox(
+                      width: 240,
+                      child: Text(
+                        property.name,
+                        overflow: TextOverflow.ellipsis,
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withAlpha(150)),
+                      ),
                     ),
                     SizedBox(
                       height: 8,

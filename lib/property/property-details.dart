@@ -74,7 +74,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
+                                SelectableText(
                                   this.widget.property.name,
                                   textDirection: TextDirection.ltr,
                                   style: TextStyle(
@@ -85,7 +85,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                                 SizedBox(
                                   height: 8,
                                 ),
-                                Text(
+                                SelectableText(
                                   "${formatCurrency.format(widget.property.price)}",
                                   textDirection: TextDirection.ltr,
                                   style: TextStyle(
@@ -99,7 +99,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                                 //       fontStyle: FontStyle.italic, color: Colors.black38),
                                 // ),
                                 Divider(),
-                                Text(
+                                SelectableText(
                                   this.widget.property.description,
                                   textDirection: TextDirection.ltr,
                                   style: TextStyle(color: Colors.black87),
