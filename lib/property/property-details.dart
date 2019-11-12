@@ -15,23 +15,55 @@ class PropertyDetails extends StatefulWidget {
 class _PropertyDetailsState extends State<PropertyDetails> {
   AnimationController _controller;
   Animation _animation;
-  double opacity=0.0;
+  double opacity = 0.0;
   @override
-  void initState(){
-    Future.delayed(Duration(milliseconds: 1)).then((value){
+  void initState() {
+    Future.delayed(Duration(milliseconds: 1)).then((value) {
       setState(() {
-        opacity=1.0; 
+        opacity = 1.0;
       });
     });
+    print("Hello world");
     // _controller=AnimationController(
     //   vsync: this,
     //   duration: Duration(seconds: 1)
     // );
   }
-  
 
   @override
   Widget build(BuildContext context) {
+    var description = this.widget.property.description;
+    var items = description.split('\n');
+    var builtDesc = "";
+    var widgetItems = items.map((item) {
+      var text1 = item.split(':')[0];
+      var text2 = item.split(':')[1];
+      return FlatButton(
+        padding: const EdgeInsets.all(0),
+        onPressed: () {},
+        child: Container(
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  text1.trim() + ": ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black.withAlpha(150),
+                  ),
+                ),
+                Text(
+                  text2.trim(),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    }).toList();
     return Scaffold(
         appBar: AppBar(
           titleSpacing: 0.0,
@@ -99,11 +131,14 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                                 //       fontStyle: FontStyle.italic, color: Colors.black38),
                                 // ),
                                 Divider(),
-                                SelectableText(
-                                  this.widget.property.description,
-                                  textDirection: TextDirection.ltr,
-                                  style: TextStyle(color: Colors.black87),
-                                ),
+                                Column(
+                                  children: widgetItems,
+                                )
+                                // SelectableText(
+                                //   items[0],
+                                //   textDirection: TextDirection.ltr,
+                                //   style: TextStyle(color: Colors.black87),
+                                // ),
                               ],
                             ),
                           ),

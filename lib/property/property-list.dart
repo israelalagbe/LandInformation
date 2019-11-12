@@ -26,14 +26,15 @@ class _PropertyListState extends State<PropertyList> {
     //     loading = false;
     //   });
     // });
-    new Future.delayed(Duration.zero, () {
-      properties = propertyService.getPosts().catchError((err) {
-        print(err);
-        alert(context,
-            title: "Error", content: "Error Occured while fetching posts");
-        //return Future.error("dddd");
-      });
-    });
+    // new Future.delayed(Duration.zero, () {
+    //   properties = propertyService.getPosts().catchError((err) {
+    //     print(err);
+    //     alert(context,
+    //         title: "Error", content: "Error Occured while fetching posts");
+    //     //return Future.error("dddd");
+    //   });
+    // });
+    loadItems();
   }
 
   Future loadItems() async {
@@ -46,7 +47,6 @@ class _PropertyListState extends State<PropertyList> {
     // print("djkjkdkd");
     setState(() {
       properties = items;
-      print(properties);
     });
     return properties;
     // });
