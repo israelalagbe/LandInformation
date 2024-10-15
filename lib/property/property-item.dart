@@ -14,7 +14,6 @@ class PropertyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Runes input = new Runes(' \u{1f605} ');
     return Card(
       child: InkWell(
         splashColor: Colors.redAccent.withAlpha(70),
@@ -81,12 +80,6 @@ class PropertyItem extends StatelessWidget {
                         color: Colors.black.withAlpha(100),
                       ),
                     ),
-                    // Text(
-                    //   "Category: Property",
-                    //   textDirection: TextDirection.ltr,
-                    //   style: TextStyle(
-                    //       fontStyle: FontStyle.italic, color: Colors.black38),
-                    // )
                   ],
                 ),
               )

@@ -1,6 +1,3 @@
-import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:land_information/property/property-admin-login.dart';
 import 'package:land_information/property/property-item.dart';
@@ -13,27 +10,11 @@ class PropertyList extends StatefulWidget {
 }
 
 class _PropertyListState extends State<PropertyList> {
-  bool loading;
   var propertyService = new PropertyService();
   Future<List<Property>> properties;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // this.loading = true;
-    // loadItems().then((value) {
-    //   setState(() {
-    //     loading = false;
-    //   });
-    // });
-    // new Future.delayed(Duration.zero, () {
-    //   properties = propertyService.getPosts().catchError((err) {
-    //     print(err);
-    //     alert(context,
-    //         title: "Error", content: "Error Occured while fetching posts");
-    //     //return Future.error("dddd");
-    //   });
-    // });
     loadItems();
   }
 
@@ -137,26 +118,4 @@ class _PropertyListState extends State<PropertyList> {
     );
   }
 
-  void _showDialog() {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Alert Dialog title"),
-          content: new Text("Alert Dialog body"),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Close"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 }
