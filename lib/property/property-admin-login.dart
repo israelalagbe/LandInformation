@@ -7,12 +7,12 @@ void alert(BuildContext context, {String title, String content}) {
     builder: (BuildContext context) {
       // return object of type Dialog
       return AlertDialog(
-        title: new Text(title),
-        content: new Text(content),
+        title: Text(title),
+        content: Text(content),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
-          new FlatButton(
-            child: new Text("Close"),
+          FlatButton(
+            child: Text("Close"),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -30,19 +30,19 @@ void confirm(BuildContext context,
     builder: (BuildContext context) {
       // return object of type Dialog
       return AlertDialog(
-        title: new Text(title),
-        content: new Text(content),
+        title: Text(title),
+        content: Text(content),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
-          new FlatButton(
-            child: new Text("No"),
+          FlatButton(
+            child: Text("No"),
             onPressed: () {
               callback(false);
               Navigator.of(context).pop();
             },
           ),
-          new FlatButton(
-            child: new Text("Yes"),
+          FlatButton(
+            child: Text("Yes"),
             onPressed: () {
               callback(true);
               Navigator.of(context).pop();
@@ -90,7 +90,7 @@ class _PropertyAdminLoginState extends State<PropertyAdminLogin> {
       ),
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+          FocusScope.of(context).requestFocus(FocusNode());
         },
         child: LayoutBuilder(builder:
             (BuildContext context, BoxConstraints viewportConstraints) {

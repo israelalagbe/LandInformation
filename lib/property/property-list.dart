@@ -10,7 +10,7 @@ class PropertyList extends StatefulWidget {
 }
 
 class _PropertyListState extends State<PropertyList> {
-  var propertyService = new PropertyService();
+  var propertyService = PropertyService();
   Future<List<Property>> properties;
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _PropertyListState extends State<PropertyList> {
       alert(context,
           title: "Error", content: "Error Occured while fetching posts");
     });
-    // new Future.delayed(Duration.zero, () {
+    // Future.delayed(Duration.zero, () {
     // print("djkjkdkd");
     setState(() {
       properties = items;

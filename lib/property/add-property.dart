@@ -51,7 +51,7 @@ class _AddPropertyState extends State<AddProperty> {
         ),
         body: GestureDetector(
           onTap: () {
-            FocusScope.of(context).requestFocus(new FocusNode());
+            FocusScope.of(context).requestFocus(FocusNode());
           },
           child: MySingleScroll(
             child: Container(
@@ -155,9 +155,9 @@ class _AddPropertyState extends State<AddProperty> {
                           setState(() {
                             loading = true;
                           });
-                          var propertyService = new PropertyService();
+                          var propertyService = PropertyService();
                           var url = await propertyService.uploadFile(_file);
-                          Property property = new Property(
+                          Property property = Property(
                             name: titleCtl.value.text,
                             description: descriptionCtl.value.text,
                             price: int.parse(priceCtl.value.text),

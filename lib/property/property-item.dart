@@ -3,7 +3,7 @@ import 'package:land_information/property/property-details.dart';
 import 'package:land_information/property/property.dart';
 import 'package:intl/intl.dart' as intl;
 
-final formatCurrency = new intl.NumberFormat.currency(symbol: "\u20A6");
+final formatCurrency = intl.NumberFormat.currency(symbol: "\u20A6");
 
 class PropertyItem extends StatelessWidget {
   final Property property;
