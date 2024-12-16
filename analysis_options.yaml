@@ -1,0 +1,9 @@
+# Lint rules for the project. See https://dart.dev/lints
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    - prefer_const_constructors
+    - prefer_final_fields
+    - unnecessary_new
+    - unnecessary_this
